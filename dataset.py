@@ -10,8 +10,9 @@ from keras.applications.vgg16 import preprocess_input
 from keras.preprocessing.image import load_img, img_to_array
 
 
-TARGET_TRAIN = './train.csv'
-TARGET_TEST = './test.csv'
+DATA_DIR = './data/'
+TARGET_TRAIN = DATA_DIR + 'train.csv'
+TARGET_TEST = DATA_DIR + 'test.csv'
 
 
 class Dataset(object):
@@ -63,7 +64,7 @@ class Dataset(object):
             for _ in range(self.batch_size):
                 sample = random.choice(data)
 
-                image = self.preprocess_image(sample[1])
+                image = self.preprocess_image(os.path.join(DATA_DIR, sample[1]))
 
                 X.append(image)
                 y.append(self.get_class_one_hot(sample[0]))
@@ -80,7 +81,7 @@ class Dataset(object):
 
 
     def load_sample(self, sample):
-        image = self.preprocess_image(sample[1])
+        image = self.preprocess_image(os.path.join(DATA_DIR, sample[1]))
         image = np.expand_dims(image, axis=0)
 
         return image

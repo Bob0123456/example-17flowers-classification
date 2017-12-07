@@ -16,7 +16,7 @@ def train(n_epochs, batch_size, image_shape):
     # helpers
     checkpointer = ModelCheckpoint(filepath='./log/train/checkpoint.hdf5', verbose=0, save_best_only=True)
     tensorboard  = TensorBoard(log_dir='./log/train/', write_graph=False)
-    earlystopper = EarlyStopping(patience=5)
+    earlystopper = EarlyStopping(patience=10)
     csvlogger    = CSVLogger('./log/train/learning.log')
 
     # create dataset
