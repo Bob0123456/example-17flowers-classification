@@ -15,7 +15,7 @@ def main():
 
     # get pairs with filename and signal
     for index, image in enumerate(sorted(glob(os.path.join(FLOWERS_IMAGES, '*')))):
-        data.append((FLOWER_NAME[index // 80], image))
+        data.append((FLOWER_NAME[index // 80], image[2:]))
 
     # split data for train or test
     train, test = train_test_split(data, random_state=2017)
