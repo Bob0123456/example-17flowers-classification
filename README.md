@@ -1,1 +1,1 @@
-# 17flowers classification
+# example-17flowers-classification
